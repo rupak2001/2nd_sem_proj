@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include <stdlib.h>
 
-
-void exam_pg_mcq(int choice){
+//function for taking mcq exam
+void exam_pg_mcq(int choice){   
     //mcq questions
     char* q_jee[] = {"An object is placed at 20 cm in front of a concave mirror produces three times magnified real image. What is the focal length of the concave mirror?"," A  metal ball immersed in alcohol weighs W1 at 0°C and W2 at 50°C. The coefficient of expansion of cubical the metal is less than that of the alcohol. Assuming that the density of the metal is large compared to that of alcohol, it can be shown that "," Wurtz reaction involves the reduction of alkyl halide with "," The number of positive integers which can be formed by using any number of digits from 0, 1, 2, 3, 4, 5 but using each digit not more than once in each number, is "," Ten different letters of an alphabet are given. Words with five letters are formed from these given letters. Then the number of words which have at least one letter repeated are"};
     char* q_neet[] = {"Which of the following organisms multiply by fragmentation? ","Who is also called the “Darwin of the 20th century”? "," Force of 50 N acting on a body at an angle θ with horizontal. If 150 J work is done by displacing it 3 m, then θ is","Decarboxylation of sodium propionate leads to the formation of ","Which of the following will increase with the increase in temperature? "};
@@ -14,10 +14,10 @@ void exam_pg_mcq(int choice){
     char* a_upsc[] = {"a)1 only\tb)2 only\nc)Both 1 and 2\td)Neither 1 nor 2","a)1 and 2 only\tb)2 only\nc)3 only\td)None","a)1 only\tb)2 only\nc)Both 1 and 2\td)Neither 1 nor 2","a)1 only\tb)2 only\nc)Both 1 and 2\td)Neither 1 nor 2","a)Full Immunity developed against the virus.\t\tb)A special type of viral infection developed in Old age people\nc)Recovered patients continue to carry some of virus within their system\td)When recovered patients are not affected again by the virus already infected."};
 
 
-    char arr[5];
+    char arr[5]; //for storing answers
 
     switch(choice){
-        case 1:
+        case 1:  //mcq JEE
         for(int i = 0;i<5;i++){
             printf("Q%d: %s\n\n",i+1,q_jee[i]);
             printf("Choose between 4 options:\n%s\n\n",a_jee[i]);
@@ -27,15 +27,12 @@ void exam_pg_mcq(int choice){
             arr[i] = c;
             if((int)arr[i]>64&&(int)arr[i]<91){
                 arr[i] = (char)((int)arr[i]+32);
-            }
-
-            if((int)c>64&&(int)c<91){
                 c = (char)((int)c+32);
             }
 
             int flag = 0;
 
-            while(flag != 1){
+            while(flag != 1){   //invalid answer detection
                 if((int)c>=97&&(int)c<=100){
                     flag = 1;
                 }
@@ -46,6 +43,7 @@ void exam_pg_mcq(int choice){
                     arr[i] = c;
                     if((int)arr[i]>64&&(int)arr[i]<91){
                         arr[i] = (char)((int)arr[i]+32);
+                        c = (char)((int)c+32);
                     }
                 }
             }
@@ -54,7 +52,7 @@ void exam_pg_mcq(int choice){
         res(choice,1,arr);
         break;
 
-        case 2:
+        case 2:  //mcq NEET
         for(int i = 0;i<5;i++){
             printf("Q%d: %s\n\n",i+1,q_neet[i]);
             printf("Choose between 4 options:\n%s\n\n",a_neet[i]);
@@ -64,11 +62,9 @@ void exam_pg_mcq(int choice){
             arr[i] = c;
             if((int)arr[i]>64&&(int)arr[i]<91){
                 arr[i] = (char)((int)arr[i]+32);
-            }
-
-            if((int)c>64&&(int)c<91){
                 c = (char)((int)c+32);
             }
+
 
             int flag = 0;
 
@@ -83,6 +79,7 @@ void exam_pg_mcq(int choice){
                     arr[i] = c;
                     if((int)arr[i]>64&&(int)arr[i]<91){
                         arr[i] = (char)((int)arr[i]+32);
+                        c = (char)((int)c+32);
                     }
                 }
             }
@@ -91,7 +88,7 @@ void exam_pg_mcq(int choice){
         res(choice,1,arr);
         break;
 
-        case 3:
+        case 3:  //mcq UPSC
         for(int i = 0;i<5;i++){
             printf("Q%d: %s\n\n",i+1,q_upsc[i]);
             printf("Choose between 4 options:\n%s\n\n",a_upsc[i]);
@@ -102,11 +99,9 @@ void exam_pg_mcq(int choice){
 
             if((int)arr[i]>64&&(int)arr[i]<91){
                 arr[i] = (char)((int)arr[i]+32);
-            }
-
-            if((int)c>64&&(int)c<91){
                 c = (char)((int)c+32);
             }
+
 
             int flag = 0;
 
@@ -121,16 +116,22 @@ void exam_pg_mcq(int choice){
                     arr[i] = c;
                     if((int)arr[i]>64&&(int)arr[i]<91){
                         arr[i] = (char)((int)arr[i]+32);
+                        c = (char)((int)c+32);
                     }
                 }
             }
             printf("\n");
         }
-        res(choice,1,arr);
+        res(choice,1,arr);  //calling this function for evaluating result
         break;
     }
 }
 
+
+
+
+
+//function for taking exam based on True & False questions
 void exam_pg_tf(int choice){
     //tf questions
     char* q_jee[] = {"The properties of solids can be explained by the structure of and the bonding among the metal atoms."," Inertia is a vector quantity. It has both magnitude and direction."," Mass and weight are the same."," The slope of a vertical line is undefined."," Two lines with positive slopes can be perpendicular."};
@@ -138,10 +139,10 @@ void exam_pg_tf(int choice){
     char* q_upsc[] = { "The five rings on the Olympic flag are interlocking?","Mount Kilimanjaro is the highest mountain in the world?", "Strictly Come Dancing first aired in the UK in 2005?","A group of swans is known as a bevy?","Sydney is the capital of Australia?"};
     
 
-    char arr[5];
+    char arr[5];  //for storing answers 
 
     switch(choice){
-        case 1:
+        case 1:  //tf JEE
         for(int i = 0;i<5;i++){
             printf("Q%d: %s\n\n",i+1,q_jee[i]);
             printf("Enter 't' for true or 'f for false\n\n");
@@ -152,11 +153,9 @@ void exam_pg_tf(int choice){
 
             if((int)arr[i]>64&&(int)arr[i]<91){
                 arr[i] = (char)((int)arr[i]+32);
-            }
-
-            if((int)c>64&&(int)c<91){
                 c = (char)((int)c+32);
             }
+
             
             int flag = 0;
 
@@ -171,6 +170,7 @@ void exam_pg_tf(int choice){
                     arr[i] = c;
                     if((int)arr[i]>64&&(int)arr[i]<91){
                         arr[i] = (char)((int)arr[i]+32);
+                        c = (char)((int)c+32);
                     }
                 }
             }
@@ -179,7 +179,7 @@ void exam_pg_tf(int choice){
         res(choice,2,arr);
         break;
         
-        case 2:
+        case 2:  //tf NEET
         for(int i = 0;i<5;i++){
             printf("Q%d: %s\n\n",i+1,q_neet[i]);
             printf("Enter 't' for true or 'f for false\n\n");
@@ -190,11 +190,9 @@ void exam_pg_tf(int choice){
 
             if((int)arr[i]>64&&(int)arr[i]<91){
                 arr[i] = (char)((int)arr[i]+32);
-            }
-
-            if((int)c>64&&(int)c<91){
                 c = (char)((int)c+32);
             }
+
             
             int flag = 0;
 
@@ -209,6 +207,7 @@ void exam_pg_tf(int choice){
                     arr[i] = c;
                     if((int)arr[i]>64&&(int)arr[i]<91){
                         arr[i] = (char)((int)arr[i]+32);
+                        c = (char)((int)c+32);
                     }
                 }
             }
@@ -217,7 +216,7 @@ void exam_pg_tf(int choice){
         res(choice,2,arr);
         break;
 
-        case 3:
+        case 3: //tf UPSC
         for(int i = 0;i<5;i++){
             printf("Q%d: %s\n\n",i+1,q_upsc[i]);
             printf("Enter 't' for true or 'f for false\n\n");
@@ -228,12 +227,9 @@ void exam_pg_tf(int choice){
 
             if((int)arr[i]>64&&(int)arr[i]<91){
                 arr[i] = (char)((int)arr[i]+32);
-            }
-
-            if((int)c>64&&(int)c<91){
                 c = (char)((int)c+32);
             }
-            
+
             int flag = 0;
 
             while(flag != 1){
@@ -247,6 +243,7 @@ void exam_pg_tf(int choice){
                     arr[i] = c;
                     if((int)arr[i]>64&&(int)arr[i]<91){
                         arr[i] = (char)((int)arr[i]+32);
+                        c = (char)((int)c+32);
                     }
                 }
             }
@@ -257,6 +254,11 @@ void exam_pg_tf(int choice){
     }
 }
 
+
+
+
+
+//function to check the answers of exam and give result
 int res(int sub,int type, char arr[]){
     char *mcqa[3][5] = {{'a','c','d','d','a'},{'d','b','c','d','d'},{'b','a','d','b','c'}};
     char *tfa[3][5] = {{'t','f','f','t','f'},{'t','f','f','t','t'},{'t','f','f','t','f'}};
@@ -330,9 +332,10 @@ int res(int sub,int type, char arr[]){
 
 }
 
-int main(){
-    //driver
 
+//driver code
+
+int main(){
     //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_RED | BACKGROUND_GREEN);
 	printf("################################\t WELCOME TO EXAMMATE \t################################\n");
 	printf("\n\t\t\t\t\tThe Buddy for Your Exam\t\n");
